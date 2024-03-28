@@ -16,74 +16,36 @@ with open("tesla_data.csv", "r") as file:
 
 print(data[0])
 
-data[1].append(0)
-sentence = data[1][0] + data[1][2]
-data[1].append(sentence)
+result = [["Dates", "Closed_Price", "Percentage_change", "Combine_headlines"]]
 
-print(data[1][5])
-
-
-percentage = data[1][4]
+date = data[1][1]
 price = data[1][3]
-for i in range(2, len(data)):
-  sentence = data[i][0] + data[i][2]
-  if data[i][3] == price:
-    data[i].append(percentage)
+percentage = 0
+row = []
+combine_sentence = data[1][0] + data[1][2]
+row.extend([date, price, percentage])
+
+print(row)
+
+for i in range(1, len(data)):
+  if data[i][3] == price and data[i][1] == date:
+    sentence = data[i][0] + data[i][2]
+    combine_sentence += sentence
   else:
-    data[i].append((float(data[i][3]) - float(price)) * 100 / float(price))
+    row.append(combine_sentence)
+    result.append(row)
+    percentage = (float(data[i][3]) - float(price)) * 100 / float(price)
     date = data[i][1]
-    percentage = data[i][4]
     price = data[i][3]
-  data[i].append(sentence)
+    row = []
+    combine_sentence = data[i][0] + data[1][2]
+    row.extend([date, price, percentage])
 
-print(data[5])
+row.append(combine_sentence)
+result.append(row)
 
-with open('tesla_final_data.csv', 'w', newline='') as file:
+with open('Tesla_Final.csv', 'w', newline='') as file:
     writer = csv.writer(file)
-    writer.writerows(data)
+    writer.writerows(result)
 
 print("CSV file edited successfully.")
-
-import pandas as pd
-
-file_path = "tesla_final_data.csv"
-
-df = pd.read_csv(file_path)
-
-print(df.head())
-
-from sklearn.model_selection import train_test_split
-
-X = df['Combine']
-y = df['Percentage_change']
-
-x_train, x_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 100)
-
-from sklearn.feature_extraction.text import CountVectorizer
-
-vectorizer = CountVectorizer()
-vectorizer.fit(x_train)
-
-X_train = vectorizer.transform(x_train)
-X_test  = vectorizer.transform(x_test)
-X_train
-
-# from sklearn.linear_model import LogisticRegression
-# from sklearn.datasets import load_iris
-# from sklearn.model_selection import train_test_split
-
-# # Load sample dataset (iris)
-# iris = load_iris()
-# X = iris.data
-# y = iris.target
-
-# # Split data into training and testing sets
-# X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# # Initialize and train the Logistic Regression classifier
-# classifier = LogisticRegression()
-# classifier.fit(X_train, y_train)
-
-# # Evaluate the classifier
-# score = classifier.score(X_test, y_test)
-# print("Accuracy:", score)
