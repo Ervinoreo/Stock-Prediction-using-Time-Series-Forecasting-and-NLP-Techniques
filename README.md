@@ -12,3 +12,5 @@ code:
 5. final-input: final inputs
 
 first, we find missing dates from original dates and merge them together, then we use dateMapping to clean close market and extract price, finally we data clean them in final input folder.
+
+****due to the rearrangement of files, the file path may not direct you to the correct folders but effort has been made, just double check when running the code.
