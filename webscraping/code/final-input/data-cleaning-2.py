@@ -9,7 +9,7 @@ Original file is located at
 
 import csv
 
-with open("../output_csv/tesla_data.csv", "r") as file:
+with open("tesla_data.csv", "r") as file:
   reader = csv.reader(file)
   data = list(reader)
   data[0].extend(["Percentage_change", "Combine"])
@@ -22,14 +22,14 @@ date = data[1][1]
 price = data[1][3]
 percentage = 0
 row = []
-combine_sentence = data[1][0] + data[1][2]
+combine_sentence = data[1][0] + " " + data[1][2] + " "
 row.extend([date, price, percentage])
 
 print(row)
 
-for i in range(1, len(data)):
+for i in range(2, len(data)):
   if data[i][3] == price and data[i][1] == date:
-    sentence = data[i][0] + data[i][2]
+    sentence = data[i][0] + " " + data[i][2] + " "
     combine_sentence += sentence
   else:
     row.append(combine_sentence)
@@ -38,14 +38,15 @@ for i in range(1, len(data)):
     date = data[i][1]
     price = data[i][3]
     row = []
-    combine_sentence = data[i][0] + data[1][2]
+    combine_sentence = data[i][0] + " " + data[1][2] + " "
     row.extend([date, price, percentage])
 
 row.append(combine_sentence)
 result.append(row)
 
-with open('../output_csv/Tesla_Final.csv', 'w', newline='') as file:
+with open('Tesla_Final.csv', 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerows(result)
 
 print("CSV file edited successfully.")
+
