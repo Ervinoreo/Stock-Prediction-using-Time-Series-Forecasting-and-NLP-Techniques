@@ -9,7 +9,7 @@ Original file is located at
 
 import csv
 
-with open("../output_csv/tesla_data.csv", "r") as file:
+with open("tesla_data.csv", "r") as file:
   reader = csv.reader(file)
   data = list(reader)
   data[0].extend(["Percentage_change", "Combine"])
@@ -44,7 +44,7 @@ for i in range(1, len(data)):
 row.append(combine_sentence)
 result.append(row)
 
-with open('../output_csv/Tesla_Final.csv', 'w', newline='') as file:
+with open('Tesla_Final.csv', 'w', newline='') as file:
     writer = csv.writer(file)
     writer.writerows(result)
 
