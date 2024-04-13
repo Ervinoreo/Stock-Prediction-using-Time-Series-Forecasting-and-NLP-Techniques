@@ -1,5 +1,5 @@
 
-# CS3244 Project Stock 
+# CS3244 Project Stock Prediction
 
 Topic: Stock Prediction Using Time Series Forecasting And NLP Techniques
 
