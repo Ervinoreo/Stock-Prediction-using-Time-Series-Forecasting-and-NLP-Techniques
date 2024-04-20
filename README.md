@@ -25,7 +25,7 @@ This project attemps to propose a basic architecture using ensemble method **sta
    - **main code**:  `find_missings.ipynb`
    - **Input csv**: `merged_tesla_headlines.csv` `stock_price.csv`(containing TESLA stock price closing price and date)
    - **Output csv**: `missing_dates_from_here.csv` (`missing_date.csv` is an EDA result from `missing_dates_from_here.csv`)
-   - **Aim**: Trim the initial dataset to only contain the dates when TESLA is listed, then map the dates that aren't in stock_price.csv to its nearest dates which are in stock_price.csv.
+   - **Aim**: Trim the initial dataset to only contain the dates when TESLA is listed, then map the dates that aren't in stock_price.csv to its nearest dates which are in stock_price.csv. Then find missing dates compared to stock_price.csv.
 
 3. **Sort And Filter Missing Dates**
    - **Folder**: `3. missings-filter-sort`
