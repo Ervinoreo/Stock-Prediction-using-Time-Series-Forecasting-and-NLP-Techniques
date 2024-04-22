@@ -54,6 +54,13 @@ This project attemps to propose a basic architecture using ensemble method **sta
    - **Input csv**: `tesla_final.csv`
    - **Output csv**:  `Word_Embedding.csv`
    - **Aim**: Turn the merged textual input to a word vector for model input after stop word removal, lemmatisation and symbol removing.
+  
+7. **Model Collection**
+   - **Folder**: `7. models`
+   - **main code**:  `All files`
+   - **Input csv**: `Word_Embedding.csv`
+   - **Output csv**:  `n.a.`
+   - **Aim**: Calculate the accuracy of each model.
 
 ## Data Scraping
 
